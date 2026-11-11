@@ -217,6 +217,18 @@ const watchingArt = watchingCard.querySelector(".watching-art");
 const watchingLink = watchingCard.querySelector("#last-watched-link");
 let watchingLoaded = false;
 
+function formatRelativeDate(dateString) {
+  if (typeof dateString !== "string") return "";
+
+  const watchedDate = new Date(`${dateString}T12:00:00`);
+  if (Number.isNaN(watchedDate.getTime())) return "";
+
+  const daysAgo = Math.max(0, Math.round((Date.now() - watchedDate.getTime()) / 86_400_000));
+  if (daysAgo === 0) return "today";
+  if (daysAgo === 1) return "yesterday";
+  return `${daysAgo} days ago`;
+}
+
 async function loadLastWatched() {
   if (watchingLoaded) return;
 
@@ -230,7 +242,8 @@ async function loadLastWatched() {
 
     watchingTitle.textContent = data.title;
     const stars = Number(data.rating) > 0 ? "★".repeat(Math.floor(data.rating)) + (data.rating % 1 ? "½" : "") : "";
-    watchingMeta.textContent = [data.year, stars].filter(Boolean).join("  ");
+    const logged = formatRelativeDate(data.watchedDate);
+    watchingMeta.textContent = [data.year, stars, logged].filter(Boolean).join(" · ");
     watchingMeta.hidden = !watchingMeta.textContent;
     watchingLink.href = url.href;
 
