@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Efe Isildar — computer science student, software builder, and music maker."
+    />
+    <meta name="theme-color" content="#EFEFEF" />
+    <title>Efe Isildar</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body>
+    <main class="portfolio" id="top">
+      <header class="topbar">
+        <span class="wordmark-icon" role="img" aria-label="Efe Isildar"></span>
+
+        <nav class="mode-switch" aria-label="Choose a portfolio view">
+          <button class="mode-button is-active" type="button" data-mode="work" aria-label="Work" aria-pressed="true">
+            Work
+          </button>
+          <button class="mode-button" type="button" data-mode="life" aria-label="Life" aria-pressed="false">
+            Life
+          </button>
+        </nav>
+      </header>
+
+      <div class="views-container">
+        <section class="view is-visible" id="work-view" aria-labelledby="work-heading">
+          <div class="intro">
+            <div class="intro-copy">
+              <h1 id="work-heading">Hi, I’m <span class="accent">Efe Isildar.</span></h1>
+              <p class="intro-description">
+                An undergrad student at OTH Regensburg, interested in
+                software development, artificial intelligence, and design.
+              </p>
+              <div class="intro-details">
+                <div class="location-grid" aria-label="Personal information">
+                  <span class="location-tile">Born in Istanbul, TR</span>
+                  <span class="location-tile">Based in Regensburg, DE</span>
+                </div>
+                <nav class="contact-grid" aria-label="Contact and profiles">
+                  <a class="contact-tile" href="https://github.com/efeis" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+                  <a class="contact-tile" href="https://www.linkedin.com/in/efeisildar/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+                  <a class="contact-tile" href="mailto:efeisldr@gmail.com">Email <span aria-hidden="true">↗</span></a>
+                </nav>
+              </div>
+            </div>
+
+            <div class="intro-profile">
+              <div class="portrait-placeholder">
+                <img class="portrait-image" src="assets/media/photo.png" alt="Portrait of Efe Isildar" />
+              </div>
+              <p class="regensburg-coordinates">49.0134° N, 12.1016° E</p>
+            </div>
+          </div>
+
+          <div class="section-heading">
+            <div>
+              <h2>Little projects that I've made</h2>
+            </div>
+          </div>
+
+          <div class="project-grid">
+            <a class="project-card project-card--theremin" href="https://efeis.github.io/trackpad-theremin/" target="_blank" rel="noopener noreferrer" aria-label="Open Trackpad Theremin demo">
+              <div class="project-art">
+                <img class="project-snapshot" src="assets/media/theremin-snapshot.png" alt="trackpad theremin interface with pitch controls and a playable sound surface" />
+              </div>
+              <div class="project-info">
+                <div class="project-title-line">
+                  <h3>trackpad theremin</h3>
+                  <span class="card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <p>a little instrument for your trackpad. move to play, change the sound, and record a take.</p>
+                <span class="project-stack">React · Web Audio API</span>
+              </div>
+            </a>
+
+            <a class="project-card project-card--locavia" href="https://project-59870267-0ffe-40cc-800.web.app" target="_blank" rel="noopener noreferrer" aria-label="Open Locavia">
+              <div class="project-art">
+                <img class="project-snapshot" src="assets/media/locavia-snapshot.png" alt="locavia place-search interface with location and category fields" />
+              </div>
+              <div class="project-info">
+                <div class="project-title-line">
+                  <h3>locavia</h3>
+                  <span class="card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <p>find places to eat and explore, then save and share your own city shortlist.</p>
+                <span class="project-stack">React · Firebase · Places API · SerpAPI</span>
+              </div>
+            </a>
+
+            <a class="project-card project-card--mono" href="https://efeis.github.io/mono-app/" target="_blank" rel="noopener noreferrer" aria-label="Open mono demo">
+              <div class="project-art">
+                <img class="project-snapshot" src="assets/media/mono-snapshot-v2.png" alt="mono feed interface showing posts and interactions" />
+              </div>
+              <div class="project-info">
+                <div class="project-title-line">
+                  <h3>mono</h3>
+                  <span class="card-arrow" aria-hidden="true">↗</span>
+                </div>
+                <p>a microblogging app with profiles, follows, and a feed of short posts.</p>
+                <span class="project-stack">React · Spring Boot</span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section class="view life-view" id="life-view" aria-labelledby="life-heading" hidden>
+          <div class="life-intro">
+            <div>
+              <h1 id="life-heading">A little more about <span class="accent">me.</span></h1>
+              <p class="intro-description">
+                When I’m not around, I’m probably making music, trying new sounds,
+                looking for a good film or losing a board game.
+              </p>
+            </div>
+            <div class="intro-profile">
+              <div class="portrait-placeholder">
+                <img class="portrait-image" src="assets/media/photo.png" alt="Portrait of Efe Isildar" />
+              </div>
+              <p class="regensburg-coordinates">49.0134° N, 12.1016° E</p>
+            </div>
+          </div>
+
+          <div class="life-grid">
+            <section class="music-section" aria-labelledby="music-heading">
+              <div class="music-section-header">
+                <h2 id="music-heading">my music</h2>
+                <div class="music-links">
+                  <a class="life-link-chip" href="https://open.spotify.com/artist/6GhypbJNrTTSfNHXOJ1gZs?si=Ufl_JhniSra3AMmbiwI5kg" target="_blank" rel="noreferrer">SPOTIFY <span aria-hidden="true">↗</span></a>
+                  <a class="life-link-chip" href="https://efeis.bandcamp.com/track/have-a-nice-sleep" target="_blank" rel="noreferrer" aria-label="Listen to Have a nice sleep on Bandcamp">BANDCAMP <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+              <div class="music-release-grid">
+                <a class="music-release" href="https://open.spotify.com/album/6TyOZrAatNmrYwcrx2FgFA?si=m17625O1SqaQlesDsRp0hg" target="_blank" rel="noopener noreferrer" aria-label="Listen to artificial on Spotify">
+                  <img src="assets/media/artificial-cover.png" alt="Cover art for artificial" />
+                  <span class="music-release-title">artificial <span aria-hidden="true">↗</span></span>
+                </a>
+                <a class="music-release" href="https://open.spotify.com/album/3G4rBsv8OL2K9pxRvYu5Yp?si=R1gKXWqvSXmcGykKBZ3kmQ" target="_blank" rel="noopener noreferrer" aria-label="Listen to monoblok on Spotify">
+                  <img src="assets/media/monoblok-cover.png" alt="Cover art for monoblok" />
+                  <span class="music-release-title">monoblok <span aria-hidden="true">↗</span></span>
+                </a>
+                <a class="music-release" href="https://open.spotify.com/album/0abRhAySS7izJh5wWAPMw2?si=mOrdGXk1RTq1geiNC567og" target="_blank" rel="noopener noreferrer" aria-label="Listen to have a nice sleep on Spotify">
+                  <img src="assets/media/have-a-nice-sleep-cover.png" alt="Cover art for have a nice sleep" />
+                  <span class="music-release-title">have a nice sleep <span aria-hidden="true">↗</span></span>
+                </a>
+                <a class="music-release" href="https://open.spotify.com/album/4nvtLWQQ4up8RCaf1fWAWP?si=aknGgP0sT1-zCRLBvUYWqg" target="_blank" rel="noopener noreferrer" aria-label="Listen to leave the house on Spotify">
+                  <img src="assets/media/leave-the-house-cover.png" alt="Cover art for leave the house" />
+                  <span class="music-release-title">leave the house <span aria-hidden="true">↗</span></span>
+                </a>
+              </div>
+            </section>
+
+            <div class="lately">
+              <h2 class="lately-h lately-h--played">last played</h2>
+              <h2 class="lately-h lately-h--watched">last watched</h2>
+
+              <article class="life-card listening-card">
+                <div class="listening-top">
+                  <span class="listening-icon" aria-hidden="true">
+                    <span class="listening-glyph">♫</span>
+                    <img class="now-playing-art" alt="" hidden />
+                  </span>
+                </div>
+                <div class="listening-copy" aria-live="polite" aria-atomic="true">
+                  <h2>more music, soon.</h2>
+                  <p class="now-playing-artist" hidden></p>
+                </div>
+                <a class="life-link-chip" id="now-playing-link" href="https://open.spotify.com/artist/6GhypbJNrTTSfNHXOJ1gZs?si=Ufl_JhniSra3AMmbiwI5kg" target="_blank" rel="noreferrer" aria-label="Find me on Spotify"><span id="now-playing-link-label">Find me on Spotify</span><span aria-hidden="true">↗</span></a>
+              </article>
+
+              <article class="life-card watching-card">
+                <div class="listening-top">
+                  <span class="listening-icon watching-poster" aria-hidden="true">
+                    <img class="watching-art" alt="" hidden />
+                  </span>
+                </div>
+                <div class="listening-copy" aria-live="polite" aria-atomic="true">
+                  <h2 class="watching-title">on letterboxd</h2>
+                  <p class="now-playing-artist watching-meta" hidden></p>
+                </div>
+                <a class="life-link-chip" id="last-watched-link" href="https://letterboxd.com/efeis/" target="_blank" rel="noreferrer"><span>Letterboxd</span><span aria-hidden="true">↗</span></a>
+              </article>
+
+              <section class="interests-section" aria-labelledby="interests-heading">
+                <h2 class="visually-hidden" id="interests-heading">my interests</h2>
+                <div class="interest-list">
+                  <span>music production</span>
+                  <span>sound design</span>
+                  <span>cinema</span>
+                  <span>board games</span>
+                  <span>visual design &amp; arts</span>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="footer-credit">
+          <span>efe isildar, 2026</span>
+          <img src="assets/media/star.svg" alt="" />
+        </div>
+        <a class="footer-github" href="https://github.com/efeis" target="_blank" rel="noopener noreferrer" aria-label="Source code on GitHub">
+          <img src="assets/media/github.svg" alt="" />
+        </a>
+      </footer>
+    </main>
+  </body>
+</html>
