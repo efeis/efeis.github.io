@@ -162,8 +162,7 @@ async function updateNowPlaying() {
     const data = await response.json();
     const songUrl = typeof data.songUrl === "string" ? new URL(data.songUrl) : null;
     const albumArt = typeof data.albumArt === "string" ? new URL(data.albumArt) : null;
-    const track = data.isPlaying === true &&
-      typeof data.title === "string" &&
+    const track = typeof data.title === "string" &&
       typeof data.artist === "string" &&
       songUrl?.protocol === "https:" &&
       songUrl.hostname === "open.spotify.com"
