@@ -1628,362 +1628,104 @@ button:focus-visible {
   }
 }
 
-/* 2026 refinement: minimal bento details and editorial life cards */
+/* Intentional portfolio refinements */
 .mode-button {
   font-size: 16px;
 }
 
 .intro,
 .life-intro {
+  position: relative;
   isolation: isolate;
 }
 
 .coordinate-watermark {
   position: absolute;
-  z-index: -1;
-  right: clamp(110px, 18vw, 260px);
-  bottom: 6px;
-  color: color-mix(in srgb, var(--accent) 10%, transparent);
-  font-family: var(--serif);
-  font-size: clamp(30px, 5.5vw, 76px);
-  font-style: italic;
-  line-height: 0.8;
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-}
-
-.bento-details {
-  width: min(100%, 540px);
-  gap: 0;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: rgba(245, 245, 245, 0.45);
-}
-
-#work-view .location-grid {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0;
-  border-bottom: 1px solid var(--line);
-}
-
-#work-view .location-tile {
-  min-height: 62px;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  gap: 2px;
-  padding: 10px 14px;
-  border-radius: 0;
-  background: transparent;
-  font-family: var(--serif);
-  font-size: 18px;
-}
-
-#work-view .location-tile + .location-tile {
-  border-left: 1px solid var(--line);
-}
-
-.location-tile small {
-  color: #00000080;
-  font-family: var(--sans);
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-}
-
-#work-view .contact-grid {
-  width: 100%;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-}
-
-#work-view .contact-tile {
-  min-height: 40px;
-  padding: 9px 12px;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  font-size: 11px;
-}
-
-#work-view .contact-tile + .contact-tile {
-  border-left: 1px solid var(--line);
-}
-
-#work-view .contact-tile:hover,
-#work-view .contact-tile:focus-visible {
-  background: var(--accent);
-  color: white;
-  box-shadow: none;
-}
-
-#work-view .contact-tile:hover span,
-#work-view .contact-tile:focus-visible span {
-  color: white;
-}
-
-.contact-tile--cv span {
-  font-size: 8px;
-}
-
-.lately {
-  align-items: start;
-}
-
-.lately .life-card {
-  display: grid;
-  min-height: 0;
-  height: auto;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto;
-  gap: 10px;
-  padding: 0;
-  overflow: visible;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-}
-
-.lately .listening-top {
-  display: block;
-  width: 100%;
-}
-
-.lately .listening-icon {
-  width: 100%;
-  height: auto;
-  max-width: none;
-  aspect-ratio: 1;
-  border-radius: 18px;
-  background: var(--card);
-  box-shadow: var(--shadow-raised);
-}
-
-.lately .watching-poster {
-  aspect-ratio: 2 / 3;
-}
-
-.lately .listening-copy {
-  min-width: 0;
-  padding: 0 3px;
-}
-
-.lately .listening-copy h2 {
-  font-size: clamp(17px, 1.5vw, 22px);
-}
-
-.lately .now-playing-artist {
-  color: #00000099;
-  font-size: 12px;
-}
-
-.lately .watching-meta {
-  color: var(--accent);
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.lately .life-link-chip {
-  min-height: 30px;
-  margin-left: 3px;
-  padding: 5px 9px;
-  box-shadow: none;
-  border: 1px solid var(--line);
-  background: transparent;
-}
-
-.lately .interests-section {
-  margin-top: 6px;
-}
-
-.interest-list {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.interest-list span {
-  position: relative;
-  min-height: 54px;
-  justify-content: flex-start;
-  overflow: hidden;
-  padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: transparent;
-  box-shadow: none;
-  font-size: 11px;
-  transition: color 160ms ease, background-color 160ms ease, transform 160ms ease;
-}
-
-.interest-list span:nth-child(1),
-.interest-list span:nth-child(5) {
-  grid-column: span 3;
-}
-
-.interest-list span:nth-child(2),
-.interest-list span:nth-child(3),
-.interest-list span:nth-child(4) {
-  grid-column: span 2;
-}
-
-.interest-list span::after {
-  position: absolute;
-  right: 10px;
-  bottom: 4px;
-  color: var(--accent);
-  font-family: var(--serif);
-  font-size: 22px;
-  content: "✦";
-  opacity: 0.2;
-}
-
-.interest-list span:hover {
-  background: var(--accent);
-  color: white;
-  transform: translateY(-2px);
-}
-
-.interest-list span:hover::after {
-  color: white;
-  opacity: 0.7;
-}
-
-@media (max-width: 760px) {
-  .mode-button {
-    font-size: 15px;
-  }
-
-  .coordinate-watermark {
-    top: 22px;
-    right: -12px;
-    bottom: auto;
-    font-size: clamp(26px, 9vw, 42px);
-  }
-
-  .bento-details {
-    width: 100%;
-  }
-
-  #work-view .contact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  #work-view .contact-tile:nth-child(3) {
-    border-left: 0;
-  }
-
-  #work-view .contact-tile:nth-child(n + 3) {
-    border-top: 1px solid var(--line);
-  }
-
-  .interest-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .interest-list span:nth-child(n) {
-    grid-column: span 1;
-  }
-
-  .interest-list span:last-child {
-    grid-column: 1 / -1;
-  }
-}
-
-/* Neumorphic refinement: hierarchy without template-like decoration */
-.life-intro {
-  position: relative;
-}
-
-.coordinate-watermark {
   z-index: 0;
   top: 50%;
   right: clamp(150px, 18vw, 260px);
-  bottom: auto;
   color: color-mix(in srgb, var(--accent) 5%, transparent);
+  font-family: var(--serif);
   font-size: clamp(26px, 3.5vw, 52px);
+  font-style: italic;
+  line-height: 0.8;
+  white-space: nowrap;
   transform: translateY(-50%);
+  pointer-events: none;
+  user-select: none;
 }
 
 .intro-copy,
 .life-intro > div,
 .intro-profile {
+  position: relative;
   z-index: 1;
 }
 
 .bento-details {
   width: min(100%, 550px);
   gap: 12px;
-  overflow: visible;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
 }
 
 #work-view .location-grid {
-  display: flex;
-  width: 100%;
   gap: 24px;
-  border: 0;
 }
 
 #work-view .location-tile {
   min-height: 0;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2px;
   padding: 0;
-  border: 0;
   background: transparent;
+  font-family: var(--serif);
   font-size: 17px;
 }
 
-#work-view .location-tile + .location-tile {
-  border: 0;
+.location-tile small {
+  color: #00000080;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
 }
 
 #work-view .contact-grid {
   width: min(100%, 480px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
 }
 
 #work-view .contact-tile {
   min-height: 38px;
   padding: 8px 11px;
-  border: 0;
   border-radius: 8px;
-  background: var(--card);
-  box-shadow: var(--work-shadow-raised);
   font-size: 11px;
 }
 
-#work-view .contact-tile + .contact-tile {
-  border: 0;
-}
-
-#work-view .contact-tile:hover,
-#work-view .contact-tile:focus-visible {
-  background: var(--card);
-  color: var(--ink);
-  box-shadow: var(--work-shadow-raised);
-}
-
-#work-view .contact-tile:hover span,
-#work-view .contact-tile:focus-visible span {
-  color: var(--accent);
-}
-
 #work-view .contact-tile:active {
-  background: var(--card);
   box-shadow: var(--work-shadow-pressed);
   transform: none;
 }
 
-.contact-tile--cv span {
-  font-size: inherit;
+@media (min-width: 1101px) {
+  #work-view .project-grid {
+    grid-template-columns: 1.2fr 0.95fr 0.85fr;
+  }
+}
+
+.music-release {
+  border-radius: 12px;
+  transition: box-shadow 130ms ease-out;
+}
+
+.music-release:hover,
+.music-release:focus-visible {
+  transform: none;
+}
+
+.music-release-title {
+  transform: none;
+  transition: opacity 150ms ease-out;
 }
 
 .lately {
@@ -1995,13 +1737,21 @@ button:focus-visible {
 .lately .life-card {
   display: grid;
   height: auto;
+  min-height: 0;
   grid-template-columns: minmax(120px, 0.9fr) minmax(120px, 1fr);
   grid-template-rows: 1fr auto;
   align-items: end;
   gap: 10px 16px;
+  padding: 0;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .lately .listening-top {
+  display: block;
+  width: 100%;
   grid-column: 1;
   grid-row: 1 / 3;
 }
@@ -2009,70 +1759,79 @@ button:focus-visible {
 .lately .listening-icon {
   width: 100%;
   height: auto;
-  border-radius: 16px;
+  max-width: none;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 14px;
+  background: var(--card);
   box-shadow: var(--shadow-raised);
 }
 
+.lately .watching-poster {
+  aspect-ratio: 2 / 3;
+  border-radius: 8px;
+}
+
 .lately .listening-copy {
+  min-width: 0;
   grid-column: 2;
   grid-row: 1;
   align-self: end;
-  padding: 0;
+}
+
+.lately .listening-copy h2 {
+  overflow: hidden;
+  font-size: clamp(17px, 1.5vw, 22px);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lately .now-playing-artist,
+.lately .watching-meta {
+  color: #00000099;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .lately .life-link-chip {
   grid-column: 2;
   grid-row: 2;
   margin: 0;
-  border: 0;
-  background: var(--card);
-  box-shadow: var(--shadow-raised);
-}
-
-.lately .life-link-chip:active {
-  box-shadow: var(--shadow-pressed);
-}
-
-.lately .watching-meta {
-  color: #00000099;
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 500;
 }
 
 .lately .interests-section {
+  display: block;
+  grid-column: 1 / -1;
+  grid-row: 3;
   margin-top: 14px;
 }
 
+.lately .interests-section > h2 {
+  min-height: 0;
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .interest-list {
+  display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
 }
 
-.interest-list span:nth-child(n) {
-  grid-column: auto;
-}
-
 .interest-list span {
-  min-height: 58px;
-  padding: 12px 14px;
-  border: 0;
-  border-radius: 10px;
+  min-height: 52px;
+  padding: 11px 13px;
+  border-radius: 8px;
   background: var(--card);
   box-shadow: var(--shadow-raised);
   font-size: 12px;
   transition: box-shadow 130ms ease-out;
 }
 
-.interest-list span::after {
-  content: none;
-}
-
 .interest-list span:hover {
-  background: var(--card);
-  color: var(--ink);
   box-shadow: var(--shadow-pressed);
-  transform: none;
 }
 
 @media (max-width: 1100px) {
@@ -2088,17 +1847,20 @@ button:focus-visible {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
+  .mode-button {
+    font-size: 15px;
+  }
+
   #work-view .location-grid {
+    display: flex;
     gap: 18px;
   }
 
   #work-view .contact-grid {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 7px;
-  }
-
-  #work-view .contact-tile:nth-child(n) {
-    border: 0;
   }
 
   .lately .life-card {
