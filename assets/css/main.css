@@ -9,7 +9,7 @@
 @font-face {
   font-family: "Bros Oskon";
   src: url("../fonts/ZTBrosOskon90s-Italic.otf") format("opentype");
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
@@ -34,6 +34,12 @@
   --shadow-pressed:
     inset 4px 4px 4px rgba(0, 0, 0, 0.25),
     inset -4px -4px 4px rgba(255, 255, 255, 0.8);
+  --control-shadow:
+    3px 5px 3px rgba(0, 0, 0, 0.22),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.85);
+  --control-pressed:
+    inset 3px 3px 3px rgba(0, 0, 0, 0.22),
+    inset -2px -2px 3px rgba(255, 255, 255, 0.85);
   --serif: "Bros Oskon", Georgia, serif;
   --sans: "DM Sans", sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -217,7 +223,7 @@ button:focus-visible {
   padding: 5px;
   border-radius: 26px;
   background: var(--card);
-  box-shadow: var(--shadow-raised);
+  box-shadow: var(--control-shadow);
 }
 
 .mode-button {
@@ -233,7 +239,7 @@ button:focus-visible {
   border-radius: 20px;
   background: var(--card);
   color: var(--ink);
-  box-shadow: var(--shadow-raised);
+  box-shadow: none;
   cursor: pointer;
   font-size: 14px;
   font-family: var(--serif);
@@ -241,14 +247,13 @@ button:focus-visible {
 }
 
 .mode-button:hover:not([aria-pressed="true"]) {
-  box-shadow: var(--shadow-raised);
+  box-shadow: none;
 }
 
 .mode-button[aria-pressed="true"] {
   background: var(--accent);
   color: #FFFFFF;
-  box-shadow:
-    var(--shadow-pressed);
+  box-shadow: var(--control-pressed);
 }
 
 .mode-button:focus-visible {
@@ -1690,21 +1695,45 @@ button:focus-visible {
 }
 
 #work-view .contact-grid {
-  width: min(100%, 480px);
+  width: min(100%, 600px);
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 10px;
 }
 
 #work-view .contact-tile {
-  min-height: 38px;
-  padding: 8px 11px;
-  border-radius: 8px;
-  font-size: 11px;
+  min-height: 48px;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  box-shadow: var(--control-shadow);
+  font-family: var(--serif);
+  font-size: 16px;
+}
+
+#work-view .contact-tile:hover,
+#work-view .contact-tile:focus-visible {
+  box-shadow: var(--control-shadow);
+}
+
+#work-view .contact-tile:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--accent),
+    var(--control-shadow);
 }
 
 #work-view .contact-tile:active {
-  box-shadow: var(--work-shadow-pressed);
+  box-shadow: var(--control-pressed);
   transform: none;
+}
+
+.contact-tile img,
+.contact-icon {
+  display: block;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  fill: currentColor;
 }
 
 @media (min-width: 1101px) {
@@ -1730,8 +1759,22 @@ button:focus-visible {
 
 .lately {
   height: auto;
-  grid-template-rows: 34px auto auto;
+  grid-template-rows: auto 34px auto;
   align-items: start;
+}
+
+.lately .interests-section {
+  grid-row: 1;
+  margin: 0 0 12px;
+}
+
+.lately-h {
+  grid-row: 2;
+}
+
+.listening-card,
+.watching-card {
+  grid-row: 3;
 }
 
 .lately .life-card {
@@ -1786,6 +1829,10 @@ button:focus-visible {
   white-space: nowrap;
 }
 
+.lately .listening-copy h2:empty {
+  display: none;
+}
+
 .lately .now-playing-artist,
 .lately .watching-meta {
   color: #00000099;
@@ -1798,13 +1845,26 @@ button:focus-visible {
   grid-column: 2;
   grid-row: 2;
   margin: 0;
+  border-radius: 999px;
+  box-shadow: var(--control-shadow);
+  font-family: var(--serif);
+  font-size: 14px;
 }
 
-.lately .interests-section {
-  display: block;
-  grid-column: 1 / -1;
-  grid-row: 3;
-  margin-top: 14px;
+.lately .life-link-chip:active {
+  box-shadow: var(--control-pressed);
+}
+
+.lately .life-link-chip:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--accent),
+    var(--control-shadow);
+}
+
+.mode-button[aria-pressed="true"]:focus-visible {
+  box-shadow:
+    0 0 0 2px var(--accent),
+    var(--control-pressed);
 }
 
 .lately .interests-section > h2 {
@@ -1863,9 +1923,20 @@ button:focus-visible {
     gap: 7px;
   }
 
+  #work-view .contact-tile {
+    min-height: 44px;
+    font-size: 15px;
+  }
+
   .lately .life-card {
     grid-template-columns: minmax(110px, 42%) minmax(0, 1fr);
   }
+
+  .lately .interests-section { grid-row: 1; }
+  .lately-h--played { grid-row: 2; }
+  .listening-card { grid-row: 3; }
+  .lately-h--watched { grid-row: 4; }
+  .watching-card { grid-row: 5; }
 
   .interest-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));

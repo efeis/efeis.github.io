@@ -23,6 +23,7 @@ const nowPlayingLinkLabel = nowPlayingCard.querySelector("#now-playing-link-labe
 const defaultNowPlayingTitle = nowPlayingTitle.textContent;
 const defaultNowPlayingLink = nowPlayingLink.href;
 const NOW_PLAYING_ENDPOINT = "https://portfolio-now-playing.efeisldr.workers.dev/api/now-playing";
+const LAST_TRACK_KEY = "efe-portfolio-last-track";
 
 logo.addEventListener("animationend", (event) => {
   if (event.animationName === "logo-color-cycle") {
@@ -142,6 +143,39 @@ function renderNowPlaying(track) {
   }
 }
 
+function parseTrack(data) {
+  const songUrl = typeof data?.songUrl === "string" ? new URL(data.songUrl) : null;
+  const albumArt = typeof data?.albumArt === "string" ? new URL(data.albumArt) : null;
+
+  return typeof data?.title === "string" &&
+    typeof data?.artist === "string" &&
+    songUrl?.protocol === "https:" &&
+    songUrl.hostname === "open.spotify.com"
+    ? {
+        title: data.title,
+        artist: data.artist,
+        songUrl: songUrl.href,
+        albumArt: albumArt?.protocol === "https:" ? albumArt.href : null,
+      }
+    : null;
+}
+
+function readCachedTrack() {
+  try {
+    return parseTrack(JSON.parse(localStorage.getItem(LAST_TRACK_KEY)));
+  } catch {
+    return null;
+  }
+}
+
+function cacheTrack(track) {
+  try {
+    localStorage.setItem(LAST_TRACK_KEY, JSON.stringify(track));
+  } catch {
+    // Storage can be unavailable in private browsing; the live track still renders.
+  }
+}
+
 async function updateNowPlaying() {
   if (activeMode !== "life" || document.visibilityState !== "visible") {
     return;
@@ -159,25 +193,14 @@ async function updateNowPlaying() {
       throw new Error(`Now Playing endpoint returned ${response.status}`);
     }
 
-    const data = await response.json();
-    const songUrl = typeof data.songUrl === "string" ? new URL(data.songUrl) : null;
-    const albumArt = typeof data.albumArt === "string" ? new URL(data.albumArt) : null;
-    const track = typeof data.title === "string" &&
-      typeof data.artist === "string" &&
-      songUrl?.protocol === "https:" &&
-      songUrl.hostname === "open.spotify.com"
-      ? {
-          title: data.title,
-          artist: data.artist,
-          songUrl: songUrl.href,
-          albumArt: albumArt?.protocol === "https:" ? albumArt.href : null,
-        }
-      : null;
-
-    renderNowPlaying(track);
+    const track = parseTrack(await response.json());
+    if (track) {
+      cacheTrack(track);
+    }
+    renderNowPlaying(track ?? readCachedTrack());
   } catch (error) {
     if (error.name !== "AbortError") {
-      renderNowPlaying(null);
+      renderNowPlaying(readCachedTrack());
       console.error("Could not update the Now Playing card.", error);
     }
   }
