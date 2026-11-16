@@ -8,14 +8,6 @@
 
 @font-face {
   font-family: "Bros Oskon";
-  src: url("../fonts/ZTBrosOskon90s-Italic.otf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Bros Oskon";
   src: url("../fonts/ZTBrosOskon90s-Regular.otf") format("opentype");
   font-style: normal;
   font-weight: 400;
@@ -241,7 +233,7 @@ button:focus-visible {
   color: var(--ink);
   box-shadow: none;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 18px;
   font-family: var(--serif);
   transition: background-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
 }
@@ -295,6 +287,10 @@ button:focus-visible {
 #work-view .contact-tile {
   box-shadow: var(--work-shadow-raised);
   transition: none;
+}
+
+#work-view .contact-tile span {
+  color: inherit;
 }
 
 #work-view .contact-tile:hover {
@@ -476,7 +472,7 @@ h1 {
 .accent {
   color: var(--accent);
   font-family: var(--serif);
-  font-style: italic;
+  font-style: normal;
   font-weight: 400;
 }
 
@@ -875,7 +871,8 @@ h1 {
   border-radius: 7px;
   background: var(--card);
   box-shadow: var(--shadow-raised);
-  font-size: 11px;
+  font-family: var(--serif);
+  font-size: 17px;
   transition: box-shadow 130ms ease-out;
 }
 
@@ -1635,7 +1632,7 @@ button:focus-visible {
 
 /* Intentional portfolio refinements */
 .mode-button {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .intro,
@@ -1652,7 +1649,7 @@ button:focus-visible {
   color: color-mix(in srgb, var(--accent) 5%, transparent);
   font-family: var(--serif);
   font-size: clamp(26px, 3.5vw, 52px);
-  font-style: italic;
+  font-style: normal;
   line-height: 0.8;
   white-space: nowrap;
   transform: translateY(-50%);
@@ -1708,7 +1705,7 @@ button:focus-visible {
   border-radius: 999px;
   box-shadow: var(--control-shadow);
   font-family: var(--serif);
-  font-size: 16px;
+  font-size: 19px;
 }
 
 #work-view .contact-tile:hover,
@@ -1730,10 +1727,11 @@ button:focus-visible {
 .contact-tile img,
 .contact-icon {
   display: block;
-  width: 17px;
-  height: 17px;
+  width: 19px;
+  height: 19px;
   flex: 0 0 auto;
   fill: currentColor;
+  object-fit: contain;
 }
 
 @media (min-width: 1101px) {
@@ -1848,7 +1846,7 @@ button:focus-visible {
   border-radius: 999px;
   box-shadow: var(--control-shadow);
   font-family: var(--serif);
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .lately .life-link-chip:active {
@@ -1909,7 +1907,7 @@ button:focus-visible {
 
 @media (max-width: 760px) {
   .mode-button {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   #work-view .location-grid {
@@ -1925,7 +1923,7 @@ button:focus-visible {
 
   #work-view .contact-tile {
     min-height: 44px;
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .lately .life-card {
