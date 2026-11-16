@@ -2043,32 +2043,37 @@ button:focus-visible {
 
 @media (min-width: 1101px) and (min-height: 640px) {
   .portfolio {
-    height: auto;
-    min-height: 100svh;
-    overflow-y: visible;
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .views-container,
   .view {
-    height: auto;
+    height: 100%;
+    min-height: 0;
   }
 
   #work-view .project-grid {
-    flex: 0 0 auto;
-    grid-template-rows: auto;
+    flex: 1 1 0;
+    min-height: 0;
+    grid-template-rows: minmax(0, 1fr);
   }
 
   #work-view .project-card {
-    height: auto;
+    height: 100%;
+    min-height: 0;
   }
 
   #work-view .project-art {
-    flex: 0 0 auto;
-    aspect-ratio: 16 / 10;
+    flex: 1 1 0;
+    min-height: 0;
+    aspect-ratio: auto;
   }
 
   #work-view .project-info {
-    min-height: 174px;
+    flex: 0 0 auto;
+    min-height: 166px;
   }
 }
 
