@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Efe Isildar — computer science student, software builder, and music maker."
+      content="Portfolio of Efe Isildar, a computer science student building full-stack web apps and creative software."
     />
     <meta name="theme-color" content="#EFEFEF" />
-    <meta property="og:title" content="Efe Isildar — software, sound, and small experiments" />
+    <meta property="og:title" content="Efe Isildar — full-stack and creative software" />
     <meta
       property="og:description"
-      content="Personal portfolio of Efe Isildar: software projects, music releases, and recent listening and viewing."
+      content="Full-stack web apps, creative software, music releases, and recent listening and viewing."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://efeis.github.io/" />
@@ -42,8 +42,9 @@
             <div class="intro-copy">
               <h1 id="work-heading">Hi, I’m <span class="accent">Efe Isildar.</span></h1>
               <p class="intro-description">
-                An undergraduate student at OTH Regensburg who loves to build
-                software that's clever, simple, and fun.
+                I’m an undergraduate computer science student at OTH Regensburg,
+                interested in full-stack development. I build web apps and creative
+                software with a focus on clear function, simple systems, and enjoyable interactions.
               </p>
               <div class="intro-details bento-details">
                 <div class="location-grid" aria-label="Personal information">
@@ -51,10 +52,10 @@
                   <span class="location-tile"><small>Based in</small>Regensburg, DE</span>
                 </div>
                 <nav class="contact-grid" aria-label="Contact and profiles">
-                  <a class="contact-tile contact-tile--cv" href="assets/documents/efe-isildar-cv.pdf" target="_blank" rel="noopener noreferrer">
+                  <button class="contact-tile contact-tile--unavailable" type="button" disabled title="CV coming soon">
                     <img src="assets/media/cv.svg" alt="" />
-                    <span>CV</span>
-                  </a>
+                    <span>CV soon</span>
+                  </button>
                   <a class="contact-tile" href="mailto:efeisldr@gmail.com">
                     <img src="assets/media/email.svg" alt="" />
                     <span>Email</span>
@@ -69,11 +70,22 @@
                   </a>
                 </nav>
               </div>
+              <div class="skills-line" aria-label="Technical skills">
+                <span class="skills-label">working with</span>
+                <ul>
+                  <li>React</li>
+                  <li>Java</li>
+                  <li>Spring Boot</li>
+                  <li>Node.js</li>
+                  <li>REST APIs</li>
+                  <li>Google Cloud</li>
+                </ul>
+              </div>
             </div>
 
             <div class="intro-profile">
               <div class="portrait-placeholder">
-                <img class="portrait-image" src="assets/media/photo.png" alt="Portrait of Efe Isildar" />
+                <img class="portrait-image" src="assets/media/photo.png" alt="Portrait of Efe Isildar" width="263" height="264" fetchpriority="high" decoding="async" />
               </div>
             </div>
             <span class="coordinate-watermark" aria-hidden="true">49.0134° N · 12.1016° E</span>
@@ -81,52 +93,61 @@
 
           <div class="section-heading">
             <div>
-              <h2>little projects that I've made</h2>
+              <h2>selected projects</h2>
             </div>
           </div>
 
           <div class="project-grid">
-            <a class="project-card project-card--theremin" href="https://efeis.github.io/trackpad-theremin/" target="_blank" rel="noopener noreferrer" aria-label="Open Trackpad Theremin demo">
+            <article class="project-card project-card--locavia">
               <div class="project-art">
-                <img class="project-snapshot" src="assets/media/theremin-snapshot.png" alt="trackpad theremin interface with pitch controls and a playable sound surface" />
-              </div>
-              <div class="project-info">
-                <div class="project-title-line">
-                  <h3>trackpad theremin</h3>
-                  <span class="card-arrow" aria-hidden="true">↗</span>
-                </div>
-                <p>a little instrument for your trackpad. move to play, change the sound, and record a take.</p>
-                <span class="project-stack">React · Web Audio API</span>
-              </div>
-            </a>
-
-            <a class="project-card project-card--locavia" href="https://project-59870267-0ffe-40cc-800.web.app" target="_blank" rel="noopener noreferrer" aria-label="Open Locavia">
-              <div class="project-art">
-                <img class="project-snapshot" src="assets/media/locavia-snapshot.png" alt="locavia place-search interface with location and category fields" />
+                <img class="project-snapshot" src="assets/media/locavia-snapshot.png" alt="Locavia place-search interface with location and category fields" width="1422" height="862" decoding="async" />
               </div>
               <div class="project-info">
                 <div class="project-title-line">
                   <h3>locavia</h3>
-                  <span class="card-arrow" aria-hidden="true">↗</span>
                 </div>
-                <p>find places to eat and explore, then save and share your own city shortlist.</p>
-                <span class="project-stack">React · Firebase · Places API · SerpAPI</span>
+                <p>Search local places and web guides, then save, annotate, arrange, and share a city shortlist.</p>
+                <span class="project-stack">React · Node.js · Express · Firestore · Google Cloud</span>
+                <div class="project-actions">
+                  <a href="https://project-59870267-0ffe-40cc-800.web.app" target="_blank" rel="noopener noreferrer" aria-label="Open the Locavia live demo">Live demo <span aria-hidden="true">↗</span></a>
+                  <a href="https://github.com/efeis/locavia" target="_blank" rel="noopener noreferrer" aria-label="View Locavia source code on GitHub"><img src="assets/media/github.svg" alt="" />Source</a>
+                </div>
               </div>
-            </a>
+            </article>
 
-            <a class="project-card project-card--mono" href="https://efeis.github.io/mono-app/" target="_blank" rel="noopener noreferrer" aria-label="Open mono demo">
+            <article class="project-card project-card--mono">
               <div class="project-art">
-                <img class="project-snapshot" src="assets/media/mono-snapshot-v2.png" alt="mono feed interface showing posts and interactions" />
+                <img class="project-snapshot" src="assets/media/mono-snapshot-v2.png" alt="Mono feed interface showing posts and interactions" width="1644" height="1162" loading="lazy" decoding="async" />
               </div>
               <div class="project-info">
                 <div class="project-title-line">
                   <h3>mono</h3>
-                  <span class="card-arrow" aria-hidden="true">↗</span>
                 </div>
-                <p>a microblogging app with profiles, follows, and a feed of short posts.</p>
-                <span class="project-stack">React · Spring Boot</span>
+                <p>A full-stack microblog with accounts, profiles, follows, likes, search, and a personalized feed.</p>
+                <span class="project-stack">React · Java · Spring Boot · REST API · H2</span>
+                <div class="project-actions">
+                  <a href="https://efeis.github.io/mono-app/" target="_blank" rel="noopener noreferrer" aria-label="Open the Mono live demo">Live demo <span aria-hidden="true">↗</span></a>
+                  <a href="https://github.com/efeis/mono-app" target="_blank" rel="noopener noreferrer" aria-label="View Mono source code on GitHub"><img src="assets/media/github.svg" alt="" />Source</a>
+                </div>
               </div>
-            </a>
+            </article>
+
+            <article class="project-card project-card--theremin">
+              <div class="project-art">
+                <img class="project-snapshot" src="assets/media/theremin-snapshot.png" alt="Trackpad Theremin interface with pitch controls and a playable sound surface" width="2114" height="1698" loading="lazy" decoding="async" />
+              </div>
+              <div class="project-info">
+                <div class="project-title-line">
+                  <h3>trackpad theremin</h3>
+                </div>
+                <p>A browser instrument: glide for pitch and volume, shape the sound, add reverb, and record a take.</p>
+                <span class="project-stack">React · Web Audio API · MediaRecorder</span>
+                <div class="project-actions">
+                  <a href="https://efeis.github.io/trackpad-theremin/" target="_blank" rel="noopener noreferrer" aria-label="Open the Trackpad Theremin live demo">Live demo <span aria-hidden="true">↗</span></a>
+                  <a href="https://github.com/efeis/trackpad-theremin" target="_blank" rel="noopener noreferrer" aria-label="View Trackpad Theremin source code on GitHub"><img src="assets/media/github.svg" alt="" />Source</a>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -141,7 +162,7 @@
             </div>
             <div class="intro-profile">
               <div class="portrait-placeholder">
-                <img class="portrait-image" src="assets/media/photo.png" alt="Portrait of Efe Isildar" />
+                <img class="portrait-image" src="assets/media/photo.png" alt="Portrait of Efe Isildar" width="263" height="264" loading="lazy" decoding="async" />
               </div>
             </div>
             <span class="coordinate-watermark" aria-hidden="true">49.0134° N · 12.1016° E</span>
@@ -158,19 +179,19 @@
               </div>
               <div class="music-release-grid">
                 <a class="music-release" href="https://open.spotify.com/album/6TyOZrAatNmrYwcrx2FgFA?si=m17625O1SqaQlesDsRp0hg" target="_blank" rel="noopener noreferrer" aria-label="Listen to artificial on Spotify">
-                  <img src="assets/media/artificial-cover.png" alt="Cover art for artificial" />
+                  <img src="assets/media/artificial-cover.png" alt="Cover art for artificial" width="769" height="768" loading="lazy" decoding="async" />
                   <span class="music-release-title">artificial <span aria-hidden="true">↗</span></span>
                 </a>
                 <a class="music-release" href="https://open.spotify.com/album/3G4rBsv8OL2K9pxRvYu5Yp?si=R1gKXWqvSXmcGykKBZ3kmQ" target="_blank" rel="noopener noreferrer" aria-label="Listen to monoblok on Spotify">
-                  <img src="assets/media/monoblok-cover.png" alt="Cover art for monoblok" />
+                  <img src="assets/media/monoblok-cover.png" alt="Cover art for monoblok" width="768" height="772" loading="lazy" decoding="async" />
                   <span class="music-release-title">monoblok <span aria-hidden="true">↗</span></span>
                 </a>
                 <a class="music-release" href="https://open.spotify.com/album/0abRhAySS7izJh5wWAPMw2?si=mOrdGXk1RTq1geiNC567og" target="_blank" rel="noopener noreferrer" aria-label="Listen to have a nice sleep on Spotify">
-                  <img src="assets/media/have-a-nice-sleep-cover.png" alt="Cover art for have a nice sleep" />
+                  <img src="assets/media/have-a-nice-sleep-cover.png" alt="Cover art for have a nice sleep" width="768" height="769" loading="lazy" decoding="async" />
                   <span class="music-release-title">have a nice sleep <span aria-hidden="true">↗</span></span>
                 </a>
                 <a class="music-release" href="https://open.spotify.com/album/4nvtLWQQ4up8RCaf1fWAWP?si=aknGgP0sT1-zCRLBvUYWqg" target="_blank" rel="noopener noreferrer" aria-label="Listen to leave the house on Spotify">
-                  <img src="assets/media/leave-the-house-cover.png" alt="Cover art for leave the house" />
+                  <img src="assets/media/leave-the-house-cover.png" alt="Cover art for leave the house" width="768" height="769" loading="lazy" decoding="async" />
                   <span class="music-release-title">leave the house <span aria-hidden="true">↗</span></span>
                 </a>
               </div>
@@ -188,7 +209,7 @@
                   </span>
                 </div>
                 <div class="listening-copy" aria-live="polite" aria-atomic="true">
-                  <h2>more music, soon.</h2>
+                  <h2></h2>
                   <p class="now-playing-artist" hidden></p>
                 </div>
                 <a class="life-link-chip" id="now-playing-link" href="https://open.spotify.com/artist/6GhypbJNrTTSfNHXOJ1gZs?si=Ufl_JhniSra3AMmbiwI5kg" target="_blank" rel="noreferrer" aria-label="Find me on Spotify"><span id="now-playing-link-label">Find me on Spotify</span><span aria-hidden="true">↗</span></a>
