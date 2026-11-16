@@ -16,6 +16,9 @@
 
 :root {
   color-scheme: light;
+  --gap-section: clamp(14px, 2.6vh, 32px);
+  --portrait: clamp(112px, 21vh, 210px);
+  --intro-h: clamp(210px, 29vh, 270px);
   --paper: #EFEFEF;
   --card: #F5F5F5;
   --ink: #000000;
@@ -279,16 +282,6 @@ button:focus-visible {
   margin-bottom: clamp(22px, 4vh, 34px);
 }
 
-#work-view .location-tile {
-  box-shadow: none;
-  cursor: default;
-}
-
-#work-view .contact-tile {
-  box-shadow: var(--work-shadow-raised);
-  transition: none;
-}
-
 #work-view .contact-tile span {
   color: inherit;
 }
@@ -443,7 +436,7 @@ button:focus-visible {
   position: relative;
   display: grid;
   min-height: 270px;
-  align-items: center;
+  align-items: start;
   padding: 34px 0 24px;
   grid-template-columns: minmax(0, 1fr) 230px;
   gap: clamp(32px, 6vw, 90px);
@@ -672,7 +665,7 @@ h1 {
   z-index: 1;
   display: flex;
   width: 100%;
-  min-height: 128px;
+  min-height: 166px;
   flex: 1;
   flex-direction: column;
   padding: 13px 15px 14px;
@@ -716,18 +709,20 @@ h1 {
 }
 
 .project-info > p {
-  margin: 5px 0 9px;
-  font-size: 12px;
+  min-height: calc(1.45em * 2);
+  margin: 7px 0 10px;
+  font-size: 15px;
   line-height: 1.45;
 }
 
 .project-stack {
   display: block;
-  margin-top: auto;
+  margin-top: 0;
   color: #000000A0;
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.025em;
+  line-height: 1.4;
 }
 
 .project-card:hover .project-art,
@@ -743,7 +738,7 @@ h1 {
 .life-intro {
   display: grid;
   min-height: 270px;
-  align-items: center;
+  align-items: start;
   padding: 34px 0 24px;
   grid-template-columns: minmax(0, 1fr) 230px;
   gap: clamp(32px, 6vw, 90px);
@@ -772,8 +767,7 @@ h1 {
   gap: 12px;
 }
 
-.music-section-header h2,
-.interests-section > h2 {
+.music-section-header h2 {
   margin: 0;
   font-size: 21px;
   font-weight: 500;
@@ -804,10 +798,10 @@ h1 {
   min-height: 0;
   overflow: hidden;
   aspect-ratio: 1;
-  border-radius: 24px;
+  border-radius: 12px;
   background: var(--card);
   box-shadow: var(--shadow-raised);
-  transition: box-shadow 130ms ease-out, transform 180ms ease-out;
+  transition: box-shadow 130ms ease-out;
 }
 
 .music-release img {
@@ -832,21 +826,21 @@ h1 {
   box-shadow: var(--shadow-raised);
   font-size: 12px;
   opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 150ms ease-out, transform 150ms ease-out;
+  transform: none;
+  transition: opacity 150ms ease-out;
   pointer-events: none;
 }
 
 .music-release:hover {
   box-shadow: var(--shadow-raised);
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .music-release:focus-visible {
   box-shadow:
     0 0 0 2px var(--accent),
     var(--shadow-raised);
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .music-release:focus-visible .music-release-title,
@@ -894,22 +888,33 @@ h1 {
 }
 
 .interests-section > h2 {
+  display: flex;
+  min-height: 34px;
+  align-items: center;
   grid-column: 1 / -1;
+  margin: 0;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 
 .interest-list {
-  display: contents;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .interest-list span {
   display: flex;
-  min-height: 42px;
+  min-height: 52px;
   align-items: center;
-  padding: 9px 12px;
-  border-radius: 18px;
+  padding: 11px 13px;
+  border-radius: 8px;
   background: var(--card);
   box-shadow: var(--shadow-raised);
   font-size: 12px;
+  transition: box-shadow 130ms ease-out;
 }
 
 .life-card {
@@ -985,7 +990,6 @@ h1 {
 .contact-tile:active,
 .project-card:active,
 .music-release:active,
-.life-link-chip:active,
 .round-link:active,
 .mode-button:active {
   box-shadow: var(--shadow-pressed);
@@ -993,18 +997,11 @@ h1 {
 }
 
 .life-link-chip:active {
+  box-shadow: var(--shadow-pressed);
   transform: none;
 }
 
 .life-link-chip:focus-visible {
-  outline: none;
-  box-shadow:
-    0 0 0 2px var(--accent),
-    var(--shadow-raised);
-}
-
-a:focus-visible,
-button:focus-visible {
   outline: none;
   box-shadow:
     0 0 0 2px var(--accent),
@@ -1165,11 +1162,7 @@ button:focus-visible {
   }
 
   .project-info > p {
-    font-size: 11px;
-  }
-
-  .project-stack {
-    font-size: 8px;
+    font-size: 14px;
   }
 
   .life-intro {
@@ -1313,30 +1306,6 @@ button:focus-visible {
 
 /* Shared responsive layout */
 
-:root {
-  --gap-section: clamp(14px, 2.6vh, 32px);
-  --portrait: clamp(112px, 21vh, 210px);
-  --intro-h: clamp(210px, 29vh, 270px);
-}
-
-/* Heading and portrait sit at the same y on both tabs */
-.intro,
-.life-intro {
-  align-items: start;
-}
-
-/* Header row of both columns shares one height so baselines match */
-.interests-section > h2 {
-  display: flex;
-  min-height: 34px;
-  align-items: center;
-}
-
-/* Last interest chip fills the row when the count is odd */
-.interest-list span:nth-child(odd):last-child {
-  grid-column: 1 / -1;
-}
-
 /* ---------- Desktop: fit exactly one viewport, no page scroll ---------- */
 @media (min-width: 1101px) and (min-height: 640px) {
   body {
@@ -1347,8 +1316,7 @@ button:focus-visible {
     height: 100svh;
     min-height: 0;
     padding: clamp(14px, 2.4vh, 28px) 40px clamp(8px, 1.4vh, 16px);
-    overflow-x: hidden;
-    overflow-y: auto; /* safety net only, normally never shows */
+    overflow: hidden;
   }
 
   .topbar {
@@ -1357,6 +1325,7 @@ button:focus-visible {
   }
 
   .views-container {
+    height: 100%;
     flex: 1 1 0;
     min-height: 0;
     grid-template-rows: minmax(0, 1fr);
@@ -1421,16 +1390,8 @@ button:focus-visible {
   }
 
   #work-view .project-info {
-    flex: none;
-    min-height: 0;
-  }
-
-  /* ----- Life: content block centered in the space below the intro ----- */
-  .life-grid {
-    flex: 1 1 0;
-    min-height: 0;
-    margin-bottom: var(--gap-section);
-    align-content: center;
+    flex: 0 0 auto;
+    min-height: 166px;
   }
 
   /* ----- Footer: same position on both tabs ----- */
@@ -1443,11 +1404,6 @@ button:focus-visible {
 }
 
 /* Refined work and life layouts */
-
-/* ---------- Work: equal text blocks, no cut-off tagline ---------- */
-.project-info > p {
-  min-height: calc(1.45em * 2); /* all three cards reserve two lines */
-}
 
 #work-view .project-card--locavia .project-snapshot {
   object-fit: contain; /* "Discover places..." was clipped on the left */
@@ -1466,81 +1422,13 @@ button:focus-visible {
   grid-column: auto;
 }
 
-.lately {
-  display: grid;
-  min-width: 0;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px 14px;
-}
-
-.lately-h {
-  display: flex;
-  min-height: 34px;
-  align-items: center;
-  margin: 0;
-  font-size: 21px;
-  font-weight: 500;
-  letter-spacing: -0.035em;
-}
-
 .lately-h--played,
 .listening-card { grid-column: 1; }
 .lately-h--watched,
 .watching-card { grid-column: 2; }
-.lately-h { grid-row: 1; }
-.listening-card,
-.watching-card { grid-row: 2; }
-
-.lately .interests-section {
-  display: block;
-  grid-column: 1 / -1;
-  grid-row: 3;
-}
-
 .lately .interests-section > h2.visually-hidden {
   display: block;
   min-height: 0;
-}
-
-.interest-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.interest-list span:nth-child(odd):last-child {
-  grid-column: auto;
-}
-
-/* Media cards: art well on top, copy, then link */
-.lately .life-card {
-  display: flex;
-  min-height: 280px;
-  flex-direction: column;
-  gap: 10px;
-  padding: 12px;
-}
-
-.lately .listening-top {
-  display: grid;
-  min-height: 0;
-  flex: 1 1 0;
-  place-items: center;
-}
-
-.lately .listening-icon {
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  aspect-ratio: 1;
-  border: 0;
-  border-radius: 14px;
-  box-shadow: var(--shadow-pressed);
-  font-size: 44px;
-}
-
-.lately .watching-poster {
-  aspect-ratio: 2 / 3;
 }
 
 .watching-art {
@@ -1552,17 +1440,6 @@ button:focus-visible {
 
 .watching-art[hidden] {
   display: none;
-}
-
-.lately .listening-copy {
-  flex: none;
-}
-
-.lately .listening-copy h2 {
-  overflow: hidden;
-  font-size: 17px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /* ---------- Tablet / phone ---------- */
@@ -1602,6 +1479,9 @@ button:focus-visible {
   }
 
   .life-grid {
+    flex: 1 1 0;
+    min-height: 0;
+    margin-bottom: var(--gap-section);
     grid-template-columns: auto minmax(0, 1fr);
     grid-template-rows: auto;
     column-gap: clamp(20px, 3vw, 48px);
@@ -1628,11 +1508,6 @@ button:focus-visible {
     height: 100%;
     min-height: 0;
   }
-}
-
-/* Intentional portfolio refinements */
-.mode-button {
-  font-size: 18px;
 }
 
 .intro,
@@ -1680,6 +1555,8 @@ button:focus-visible {
   gap: 2px;
   padding: 0;
   background: transparent;
+  box-shadow: none;
+  cursor: default;
   font-family: var(--serif);
   font-size: 17px;
 }
@@ -1740,34 +1617,32 @@ button:focus-visible {
   }
 }
 
-.music-release {
-  border-radius: 12px;
-  transition: box-shadow 130ms ease-out;
-}
-
-.music-release:hover,
-.music-release:focus-visible {
-  transform: none;
-}
-
-.music-release-title {
-  transform: none;
-  transition: opacity 150ms ease-out;
-}
-
 .lately {
+  display: grid;
+  min-width: 0;
   height: auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: auto 34px auto;
   align-items: start;
+  gap: 12px 14px;
 }
 
 .lately .interests-section {
+  display: block;
+  grid-column: 1 / -1;
   grid-row: 1;
   margin: 0 0 12px;
 }
 
 .lately-h {
+  display: flex;
+  min-height: 34px;
+  align-items: center;
   grid-row: 2;
+  margin: 0;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
 }
 
 .listening-card,
@@ -1806,6 +1681,7 @@ button:focus-visible {
   border-radius: 14px;
   background: var(--card);
   box-shadow: var(--shadow-raised);
+  font-size: 44px;
 }
 
 .lately .watching-poster {
@@ -1859,33 +1735,11 @@ button:focus-visible {
     var(--control-shadow);
 }
 
-.mode-button[aria-pressed="true"]:focus-visible {
-  box-shadow:
-    0 0 0 2px var(--accent),
-    var(--control-pressed);
-}
-
 .lately .interests-section > h2 {
   min-height: 0;
   margin: 0 0 10px;
   font-size: 15px;
   font-weight: 500;
-}
-
-.interest-list {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.interest-list span {
-  min-height: 52px;
-  padding: 11px 13px;
-  border-radius: 8px;
-  background: var(--card);
-  box-shadow: var(--shadow-raised);
-  font-size: 12px;
-  transition: box-shadow 130ms ease-out;
 }
 
 .interest-list span:hover {
@@ -1945,36 +1799,35 @@ button:focus-visible {
   }
 }
 
-/* Portfolio content and navigation refinements */
-.skills-line {
-  display: flex;
+/* Compact technical overview */
+.skills-overview {
+  display: grid;
   width: 100%;
   min-width: 0;
-  max-width: 760px;
-  align-items: baseline;
-  gap: 10px;
-  margin-top: 16px;
-  color: #000000A6;
-  font-size: 12px;
+  max-width: 900px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 18px;
+  margin-top: 14px;
 }
 
-.skills-label {
-  flex: 0 0 auto;
-  color: #00000080;
+.skill-group {
+  min-width: 0;
 }
 
-.skills-line ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.skills-line li:not(:last-child)::after {
-  content: " ·";
+.skill-group h2 {
+  margin: 0 0 2px;
   color: var(--accent);
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.skill-group p {
+  margin: 0;
+  color: #000000A6;
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 #work-view .contact-tile--unavailable {
@@ -1985,22 +1838,6 @@ button:focus-visible {
 
 #work-view .contact-tile--unavailable img {
   opacity: 0.48;
-}
-
-#work-view .project-info {
-  min-height: 166px;
-}
-
-.project-info > p {
-  margin: 7px 0 10px;
-  font-size: 15px;
-  line-height: 1.45;
-}
-
-.project-stack {
-  margin-top: 0;
-  font-size: 12px;
-  line-height: 1.4;
 }
 
 .project-actions {
@@ -2041,42 +1878,6 @@ button:focus-visible {
   height: 15px;
 }
 
-@media (min-width: 1101px) and (min-height: 640px) {
-  .portfolio {
-    height: 100svh;
-    min-height: 0;
-    overflow: hidden;
-  }
-
-  .views-container,
-  .view {
-    height: 100%;
-    min-height: 0;
-  }
-
-  #work-view .project-grid {
-    flex: 1 1 0;
-    min-height: 0;
-    grid-template-rows: minmax(0, 1fr);
-  }
-
-  #work-view .project-card {
-    height: 100%;
-    min-height: 0;
-  }
-
-  #work-view .project-art {
-    flex: 1 1 0;
-    min-height: 0;
-    aspect-ratio: auto;
-  }
-
-  #work-view .project-info {
-    flex: 0 0 auto;
-    min-height: 166px;
-  }
-}
-
 @media (max-width: 760px) {
   .intro-copy,
   .intro-details,
@@ -2086,10 +1887,9 @@ button:focus-visible {
     max-width: 100%;
   }
 
-  .skills-line {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 5px;
+  .skills-overview {
+    grid-template-columns: 1fr;
+    gap: 8px;
     margin-top: 14px;
   }
 
@@ -2101,9 +1901,6 @@ button:focus-visible {
     font-size: 14px;
   }
 
-  .project-stack {
-    font-size: 12px;
-  }
 }
 
 @media (max-width: 360px) {
