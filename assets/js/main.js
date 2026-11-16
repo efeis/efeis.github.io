@@ -1,6 +1,7 @@
 const modeSwitch = document.querySelector(".mode-switch");
 const portfolio = document.querySelector(".portfolio");
 const logo = document.querySelector(".wordmark-icon");
+const headerCoordinates = document.querySelector(".header-coordinates");
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const views = {
   work: document.querySelector("#work-view"),
@@ -12,6 +13,18 @@ let viewAnimationFrame;
 let activeMode = "work";
 let nowPlayingInterval;
 let nowPlayingRequest;
+
+let coordinateDigitIndex = 0;
+const coordinateParts = [...headerCoordinates.textContent].map((character) => {
+  if (!/\d/.test(character)) return document.createTextNode(character);
+
+  const digit = document.createElement("span");
+  digit.className = "coordinate-digit";
+  digit.style.setProperty("--digit-index", coordinateDigitIndex++);
+  digit.textContent = character;
+  return digit;
+});
+headerCoordinates.replaceChildren(...coordinateParts);
 
 const nowPlayingCard = document.querySelector(".listening-card");
 const nowPlayingTitle = nowPlayingCard.querySelector(".listening-copy h2");
@@ -30,6 +43,12 @@ logo.addEventListener("animationend", (event) => {
     logo.classList.remove("is-color-cycling", "is-color-cycling-reverse");
   }
 });
+
+function animateCoordinateDigits(mode) {
+  headerCoordinates.classList.remove("is-changing-to-life", "is-changing-to-work");
+  void headerCoordinates.offsetWidth;
+  headerCoordinates.classList.add(`is-changing-to-${mode}`);
+}
 
 function setMode(mode) {
   const previousMode = activeMode;
@@ -50,6 +69,10 @@ function setMode(mode) {
   }
   modeSwitch.dataset.active = mode;
   portfolio.dataset.mode = mode;
+
+  if (previousMode !== mode) {
+    animateCoordinateDigits(mode);
+  }
 
   logo.classList.remove("is-color-cycling", "is-color-cycling-reverse");
   if (previousMode !== mode && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
