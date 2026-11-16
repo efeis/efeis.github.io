@@ -1,6 +1,5 @@
 const modeSwitch = document.querySelector(".mode-switch");
 const portfolio = document.querySelector(".portfolio");
-const logo = document.querySelector(".wordmark-icon");
 const headerCoordinates = document.querySelector(".header-coordinates");
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const views = {
@@ -8,7 +7,6 @@ const views = {
   life: document.querySelector("#life-view"),
 };
 let viewTransition;
-let logoAnimationFrame;
 let viewAnimationFrame;
 let activeMode = "work";
 let nowPlayingInterval;
@@ -38,12 +36,6 @@ const defaultNowPlayingLink = nowPlayingLink.href;
 const NOW_PLAYING_ENDPOINT = "https://portfolio-now-playing.efeisldr.workers.dev/api/now-playing";
 const LAST_TRACK_KEY = "efe-portfolio-last-track";
 
-logo.addEventListener("animationend", (event) => {
-  if (event.animationName === "logo-color-cycle") {
-    logo.classList.remove("is-color-cycling", "is-color-cycling-reverse");
-  }
-});
-
 function animateCoordinateDigits(mode) {
   headerCoordinates.classList.remove("is-changing-to-life", "is-changing-to-work");
   void headerCoordinates.offsetWidth;
@@ -56,7 +48,6 @@ function setMode(mode) {
   const previousScrollY = window.scrollY;
 
   window.clearTimeout(viewTransition);
-  window.cancelAnimationFrame(logoAnimationFrame);
   window.cancelAnimationFrame(viewAnimationFrame);
   for (const view of Object.values(views)) {
     view.classList.remove("is-leaving", "is-entering");
@@ -72,16 +63,6 @@ function setMode(mode) {
 
   if (previousMode !== mode) {
     animateCoordinateDigits(mode);
-  }
-
-  logo.classList.remove("is-color-cycling", "is-color-cycling-reverse");
-  if (previousMode !== mode && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    logoAnimationFrame = window.requestAnimationFrame(() => {
-      logo.classList.add("is-color-cycling");
-      if (mode === "work") {
-        logo.classList.add("is-color-cycling-reverse");
-      }
-    });
   }
 
   for (const button of modeButtons) {
