@@ -7,12 +7,15 @@
   --surface: #f5f5f5;
   --ink: #000;
   --muted: #5f5f5f;
-  --accent: #d90000;
+  --work-accent: #d90000;
+  --life-accent: #002fff;
+  --cycle-yellow: #ffd400;
+  --cycle-green: #00a83b;
+  --accent: var(--work-accent);
   --sans: "DM Sans", sans-serif;
   --serif: "Bros Oskon", Georgia, serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --portrait-size: clamp(150px, 14vw, 190px);
-  --s1: 6px;
   --s2: 10px;
   --s3: 16px;
   --s4: 24px;
@@ -30,11 +33,13 @@ button { color: inherit; font: inherit; }
 img { max-width: 100%; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-.portfolio { --accent: #d90000; display: flex; width: min(100%, 1440px); min-height: 100svh; margin: 0 auto; padding: clamp(20px, 3vw, 42px) clamp(20px, 4vw, 56px) 20px; flex-direction: column; }
-.portfolio[data-mode="life"] { --accent: #002fff; }
+.portfolio { --accent: var(--work-accent); display: flex; width: min(100%, 1440px); min-height: 100svh; margin: 0 auto; padding: clamp(20px, 3vw, 42px) clamp(20px, 4vw, 56px) 20px; flex-direction: column; }
+.portfolio[data-mode="life"] { --accent: var(--life-accent); }
 
 .topbar { position: relative; z-index: 4; display: grid; min-height: 48px; align-items: center; grid-template-columns: 1fr auto 1fr; }
-.wordmark-icon { display: block; width: 38px; height: 38px; background: var(--accent); -webkit-mask: url("../media/star.svg") center / contain no-repeat; mask: url("../media/star.svg") center / contain no-repeat; transition: background-color 180ms ease-out; }
+.wordmark-icon { display: block; width: 38px; height: 38px; background: var(--accent); -webkit-mask: url("../media/star.svg") center / contain no-repeat; mask: url("../media/star.svg") center / contain no-repeat; }
+.wordmark-icon.is-changing-to-life { animation: logo-to-life 600ms steps(1, end) both; }
+.wordmark-icon.is-changing-to-work { animation: logo-to-work 600ms steps(1, end) both; }
 
 .mode-switch { display: grid; width: 206px; height: 44px; padding: 5px; grid-template-columns: repeat(2, 1fr); border-radius: 999px; background: var(--surface); box-shadow: var(--control); }
 .mode-button { border: 0; border-radius: 999px; background: transparent; font-family: var(--serif); font-size: 19px; cursor: pointer; }
@@ -42,21 +47,21 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .mode-button:active { box-shadow: var(--pressed); }
 
 .header-coordinates { justify-self: end; overflow: hidden; color: var(--muted); clip-path: inset(0 100% 0 0); font-family: var(--serif); font-size: clamp(14px, 1.4vw, 20px); line-height: 1; white-space: nowrap; animation: type-coordinates 1.5s steps(25, end) 180ms forwards; }
-.header-coordinates .coordinate-digit { color: #d90000; }
-.header-coordinates .coordinate-direction { color: var(--accent); transition: color 180ms ease-out; }
-.header-coordinates.is-changing-to-life .coordinate-digit { animation: to-life 180ms ease-out both; animation-delay: calc(var(--digit-index) * 45ms); }
-.header-coordinates.is-changing-to-work .coordinate-digit { animation: to-work 180ms ease-out both; animation-delay: calc(var(--digit-index) * 45ms); }
+.header-coordinates :is(.coordinate-digit, .coordinate-direction) { color: var(--work-accent); }
+.header-coordinates.is-changing-to-life :is(.coordinate-digit, .coordinate-direction) { animation: coordinate-to-life 600ms steps(1, end) both; animation-delay: calc(var(--coordinate-index) * 35ms); }
+.header-coordinates.is-changing-to-work :is(.coordinate-digit, .coordinate-direction) { animation: coordinate-to-work 600ms steps(1, end) both; animation-delay: calc(var(--coordinate-index) * 35ms); }
 @keyframes type-coordinates { to { clip-path: inset(0); } }
-@keyframes to-life { from { color: #d90000; } to { color: #002fff; } }
-@keyframes to-work { from { color: #002fff; } to { color: #d90000; } }
+@keyframes logo-to-life { 0% { background: var(--work-accent); } 33.333% { background: var(--cycle-yellow); } 66.666% { background: var(--cycle-green); } 100% { background: var(--life-accent); } }
+@keyframes logo-to-work { 0% { background: var(--life-accent); } 33.333% { background: var(--cycle-green); } 66.666% { background: var(--cycle-yellow); } 100% { background: var(--work-accent); } }
+@keyframes coordinate-to-life { 0% { color: var(--work-accent); } 33.333% { color: var(--cycle-yellow); } 66.666% { color: var(--cycle-green); } 100% { color: var(--life-accent); } }
+@keyframes coordinate-to-work { 0% { color: var(--life-accent); } 33.333% { color: var(--cycle-green); } 66.666% { color: var(--cycle-yellow); } 100% { color: var(--work-accent); } }
 
 .views-container { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr); }
-.view { display: none; min-width: 0; grid-column: 1; grid-row: 1; }
+.view { display: none; min-width: 0; grid-column: 1; grid-row: 1; transition: opacity 180ms ease-out; }
 .view:not([hidden]) { display: flex; flex-direction: column; }
 .view[hidden] { display: none; }
 .view.is-entering { opacity: 0; }
 .view.is-leaving { opacity: 0; }
-.view { transition: opacity 180ms ease-out; }
 
 .intro, .life-intro { display: grid; min-width: 0; padding: clamp(38px, 7vh, 74px) 0 clamp(30px, 5vh, 54px); align-items: center; grid-template-columns: minmax(0, 1fr) minmax(430px, 590px); gap: clamp(32px, 6vw, 88px); }
 h1 { margin: 0; font-size: clamp(44px, 5vw, 68px); font-weight: 500; letter-spacing: -0.04em; line-height: .98; }
@@ -160,7 +165,7 @@ h1 { margin: 0; font-size: clamp(44px, 5vw, 68px); font-weight: 500; letter-spac
   #work-view .project-art { min-height: clamp(145px, 21vh, 185px); height: clamp(145px, 21vh, 185px); aspect-ratio: auto; }
   #work-view .project-info { min-height: 176px; padding: 15px 18px 16px; }
   #work-view .project-actions { padding-top: 10px; }
-  .site-footer { min-height: 96px; padding-top: 20px; }
+  .site-footer { padding-top: 20px; }
 }
 
 @media (min-width: 1101px) and (max-height: 820px) {
@@ -187,7 +192,7 @@ h1 { margin: 0; font-size: clamp(44px, 5vw, 68px); font-weight: 500; letter-spac
 @media (max-width: 767px) {
   .portfolio { padding: 16px 20px 24px; }
   .topbar { grid-template-columns: 1fr auto; }
-  .mode-switch { position: static; width: 172px; height: 42px; grid-column: 1 / -1; grid-row: 2; margin: 16px auto 0; }
+  .mode-switch { width: 172px; height: 42px; grid-column: 1 / -1; grid-row: 2; margin: 16px auto 0; }
   .mode-button { font-size: 17px; }
   .header-coordinates { grid-column: 2; grid-row: 1; font-size: 13px; }
   .intro, .life-intro { padding: 38px 0 34px; grid-template-columns: 1fr; gap: 22px; }
@@ -204,16 +209,15 @@ h1 { margin: 0; font-size: clamp(44px, 5vw, 68px); font-weight: 500; letter-spac
   .section-heading { margin-bottom: 18px; }
   .project-grid { grid-template-columns: 1fr; gap: 16px; }
   .project-card--theremin { grid-column: auto; }
-  .project-card--theremin .project-art, .project-art { min-height: 190px; aspect-ratio: 16 / 10; }
+  .project-art { min-height: 190px; aspect-ratio: 16 / 10; }
   .project-info { min-height: 0; }
   .life-intro .intro-profile { justify-self: start; }
   .life-grid { gap: 38px; }
-  .music-section-header { align-items: flex-start; flex-direction: column; }
+  .music-section-header { flex-direction: column; }
   .music-release-title { opacity: 1; }
-  .lately { grid-template-columns: 1fr; grid-template-areas: "interests" "played-h" "played" "watched-h" "watched"; gap: 12px; }
+  .lately { --media-height: clamp(170px, 52vw, 220px); grid-template-columns: 1fr; grid-template-areas: "interests" "played-h" "played" "watched-h" "watched"; gap: 12px; }
   .interests-section { margin-bottom: 18px; }
   .lately-h--watched { margin-top: 18px; }
-  .lately { --media-height: clamp(170px, 52vw, 220px); }
   .life-card { grid-template-columns: auto minmax(0, 1fr); }
 }
 
@@ -228,8 +232,10 @@ h1 { margin: 0; font-size: clamp(44px, 5vw, 68px); font-weight: 500; letter-spac
 
 @media (prefers-reduced-motion: reduce) {
   .header-coordinates { clip-path: none; animation: none; }
-  .header-coordinates.is-changing-to-life .coordinate-digit, .header-coordinates.is-changing-to-work .coordinate-digit { animation: none; }
-  .portfolio[data-mode="life"] .coordinate-digit { color: #002fff; }
-  .portfolio:not([data-mode="life"]) .coordinate-digit { color: #d90000; }
+  .wordmark-icon.is-changing-to-life, .wordmark-icon.is-changing-to-work,
+  .header-coordinates.is-changing-to-life :is(.coordinate-digit, .coordinate-direction),
+  .header-coordinates.is-changing-to-work :is(.coordinate-digit, .coordinate-direction) { animation: none; }
+  .portfolio[data-mode="life"] .header-coordinates :is(.coordinate-digit, .coordinate-direction) { color: var(--life-accent); }
+  .portfolio:not([data-mode="life"]) .header-coordinates :is(.coordinate-digit, .coordinate-direction) { color: var(--work-accent); }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

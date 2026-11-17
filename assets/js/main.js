@@ -1,5 +1,5 @@
-const modeSwitch = document.querySelector(".mode-switch");
 const portfolio = document.querySelector(".portfolio");
+const logo = document.querySelector(".wordmark-icon");
 const headerCoordinates = document.querySelector(".header-coordinates");
 const modeButtons = [...document.querySelectorAll(".mode-button")];
 const views = {
@@ -12,22 +12,21 @@ let activeMode = "work";
 let nowPlayingInterval;
 let nowPlayingRequest;
 
-let coordinateDigitIndex = 0;
+let coordinateColorIndex = 0;
 const coordinateParts = [...headerCoordinates.textContent].map((character) => {
-  if (/[NE]/.test(character)) {
-    const direction = document.createElement("span");
-    direction.className = "coordinate-direction";
-    direction.textContent = character;
-    return direction;
-  }
+  const className = /\d/.test(character)
+    ? "coordinate-digit"
+    : /[NE]/.test(character)
+      ? "coordinate-direction"
+      : null;
 
-  if (!/\d/.test(character)) return document.createTextNode(character);
+  if (!className) return document.createTextNode(character);
 
-  const digit = document.createElement("span");
-  digit.className = "coordinate-digit";
-  digit.style.setProperty("--digit-index", coordinateDigitIndex++);
-  digit.textContent = character;
-  return digit;
+  const colorCharacter = document.createElement("span");
+  colorCharacter.className = className;
+  colorCharacter.style.setProperty("--coordinate-index", coordinateColorIndex++);
+  colorCharacter.textContent = character;
+  return colorCharacter;
 });
 headerCoordinates.replaceChildren(...coordinateParts);
 
@@ -43,11 +42,20 @@ const defaultNowPlayingLink = nowPlayingLink.href;
 const NOW_PLAYING_ENDPOINT = "https://portfolio-now-playing.efeisldr.workers.dev/api/now-playing";
 const LAST_TRACK_KEY = "efe-portfolio-last-track";
 
-function animateCoordinateDigits(mode) {
+function animateModeColors(mode) {
+  logo.classList.remove("is-changing-to-life", "is-changing-to-work");
   headerCoordinates.classList.remove("is-changing-to-life", "is-changing-to-work");
+
+  void logo.offsetWidth;
   void headerCoordinates.offsetWidth;
+
+  logo.classList.add(`is-changing-to-${mode}`);
   headerCoordinates.classList.add(`is-changing-to-${mode}`);
 }
+
+logo.addEventListener("animationend", () => {
+  logo.classList.remove("is-changing-to-life", "is-changing-to-work");
+});
 
 function setMode(mode) {
   const previousMode = activeMode;
@@ -65,11 +73,10 @@ function setMode(mode) {
       view.inert = false;
     }
   }
-  modeSwitch.dataset.active = mode;
   portfolio.dataset.mode = mode;
 
   if (previousMode !== mode) {
-    animateCoordinateDigits(mode);
+    animateModeColors(mode);
   }
 
   for (const button of modeButtons) {
@@ -121,7 +128,6 @@ function setMode(mode) {
 
 function renderNowPlaying(track) {
   if (!track) {
-    nowPlayingCard.classList.remove("is-playing");
     nowPlayingTitle.textContent = defaultNowPlayingTitle;
     nowPlayingArtist.textContent = "";
     nowPlayingArtist.hidden = true;
@@ -134,7 +140,6 @@ function renderNowPlaying(track) {
     return;
   }
 
-  nowPlayingCard.classList.add("is-playing");
   nowPlayingTitle.textContent = track.title;
   nowPlayingArtist.textContent = track.artist;
   nowPlayingArtist.hidden = false;

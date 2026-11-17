@@ -18,8 +18,8 @@
     <title>Efe Isildar</title>
     <link rel="canonical" href="https://efeis.github.io/" />
     <link rel="icon" href="assets/media/star.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="assets/css/main.css?v=20261117-2" />
-    <script src="assets/js/main.js?v=20261117-2" defer></script>
+    <link rel="stylesheet" href="assets/css/main.css?v=20261117-3" />
+    <script src="assets/js/main.js?v=20261117-3" defer></script>
   </head>
   <body>
     <main class="portfolio" id="top">
@@ -39,15 +39,15 @@
       </header>
 
       <div class="views-container">
-        <section class="view is-visible" id="work-view" aria-labelledby="work-heading">
+        <section class="view" id="work-view" aria-labelledby="work-heading">
           <div class="intro">
-            <div class="intro-copy">
+            <div>
               <h1 id="work-heading">Hi, I’m <span class="accent">Efe Isildar.</span></h1>
               <p class="intro-description">
                 An undergraduate student at OTH Regensburg who loves to build
                 software that's clever, simple, and fun.
               </p>
-              <div class="intro-details bento-details">
+              <div class="intro-details">
                 <nav class="contact-grid" aria-label="Contact and profiles">
                   <a class="contact-tile" href="mailto:efeisldr@gmail.com">
                     <img src="assets/media/email.svg" alt="" />
@@ -94,20 +94,16 @@
           </div>
 
           <div class="section-heading">
-            <div>
-              <h2>selected projects</h2>
-            </div>
+            <h2>selected projects</h2>
           </div>
 
           <div class="project-grid">
-            <article class="project-card project-card--locavia">
+            <article class="project-card">
               <div class="project-art">
                 <img class="project-snapshot" src="assets/media/locavia-snapshot.png" alt="Locavia place-search interface with location and category fields" width="1422" height="862" decoding="async" />
               </div>
               <div class="project-info">
-                <div class="project-title-line">
-                  <h3>locavia</h3>
-                </div>
+                <h3>locavia</h3>
                 <p>Search local places and web guides, then save, annotate, arrange, and share a city shortlist.</p>
                 <span class="project-stack">React · Node.js · Express · Firestore · Google Cloud</span>
                 <div class="project-actions">
@@ -117,14 +113,12 @@
               </div>
             </article>
 
-            <article class="project-card project-card--mono">
+            <article class="project-card">
               <div class="project-art">
                 <img class="project-snapshot" src="assets/media/mono-snapshot-v2.png" alt="Mono feed interface showing posts and interactions" width="1644" height="1162" loading="lazy" decoding="async" />
               </div>
               <div class="project-info">
-                <div class="project-title-line">
-                  <h3>mono</h3>
-                </div>
+                <h3>mono</h3>
                 <p>A full-stack microblog with accounts, profiles, follows, likes, search, and a personalized feed.</p>
                 <span class="project-stack">React · Java · Spring Boot · REST API · H2</span>
                 <div class="project-actions">
@@ -139,9 +133,7 @@
                 <img class="project-snapshot" src="assets/media/theremin-snapshot.png" alt="Trackpad Theremin interface with pitch controls and a playable sound surface" width="2114" height="1698" loading="lazy" decoding="async" />
               </div>
               <div class="project-info">
-                <div class="project-title-line">
-                  <h3>trackpad theremin</h3>
-                </div>
+                <h3>trackpad theremin</h3>
                 <p>A browser instrument: glide for pitch and volume, shape the sound, add reverb, and record a take.</p>
                 <span class="project-stack">React · Web Audio API · MediaRecorder</span>
                 <div class="project-actions">
@@ -153,7 +145,7 @@
           </div>
         </section>
 
-        <section class="view life-view" id="life-view" aria-labelledby="life-heading" hidden>
+        <section class="view" id="life-view" aria-labelledby="life-heading" hidden>
           <div class="life-intro">
             <div>
               <h1 id="life-heading">A little more about <span class="accent">me.</span></h1>
@@ -245,7 +237,7 @@
         </section>
       </div>
 
-      <footer class="site-footer" role="contentinfo">
+      <footer class="site-footer">
         <div class="footer-credit">
           <span>efe isildar, 2026</span>
           <img src="assets/media/star.svg" alt="" />
