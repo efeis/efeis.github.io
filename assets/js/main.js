@@ -14,6 +14,13 @@ let nowPlayingRequest;
 
 let coordinateDigitIndex = 0;
 const coordinateParts = [...headerCoordinates.textContent].map((character) => {
+  if (/[NE]/.test(character)) {
+    const direction = document.createElement("span");
+    direction.className = "coordinate-direction";
+    direction.textContent = character;
+    return direction;
+  }
+
   if (!/\d/.test(character)) return document.createTextNode(character);
 
   const digit = document.createElement("span");
