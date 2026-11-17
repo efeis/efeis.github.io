@@ -244,8 +244,7 @@ for (const button of modeButtons) {
 
 setMode("work");
 
-// Your Worker proxies Letterboxd's RSS (browsers can't read it directly: CORS)
-// and returns { title, year, rating, url, poster } for the newest diary entry.
+// The Worker proxies Letterboxd's RSS to avoid browser CORS restrictions.
 const LETTERBOXD_ENDPOINT = "https://portfolio-now-playing.efeisldr.workers.dev/api/last-watched";
 
 const watchingCard = document.querySelector(".watching-card");
