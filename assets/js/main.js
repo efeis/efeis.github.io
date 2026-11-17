@@ -14,11 +14,10 @@ let nowPlayingRequest;
 
 let coordinateColorIndex = 0;
 const coordinateParts = [...headerCoordinates.textContent].map((character) => {
-  const className = /\d/.test(character)
-    ? "coordinate-digit"
-    : /[NE]/.test(character)
-      ? "coordinate-direction"
-      : null;
+  let className = null;
+  if (/\d/.test(character)) className = "coordinate-digit";
+  else if (/[NE]/.test(character)) className = "coordinate-direction";
+  else if (/[.·°]/u.test(character)) className = "coordinate-symbol";
 
   if (!className) return document.createTextNode(character);
 
